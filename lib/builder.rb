@@ -43,6 +43,8 @@ class CustomWizard::Builder
 
   def self.fill_placeholders(string, user, data)
     data['upload_url'] = data['upload']['url']
+    data['human_filesize'] = data['upload']['human_filesize']
+    data['original_filename'] = data['upload']['original_filename']
     result = string.gsub(/u\{(.*?)\}/) do |match|
       result = ''
       result = user.send($1) if USER_FIELDS.include?($1)
