@@ -42,7 +42,7 @@ class CustomWizard::Builder
   PROFILE_FIELDS = ['location', 'website', 'bio_raw', 'profile_background', 'card_background']
 
   def self.fill_placeholders(string, user, data)
-    data[test] = data
+    data['upload_url'] = data['upload']['url']
     result = string.gsub(/u\{(.*?)\}/) do |match|
       result = ''
       result = user.send($1) if USER_FIELDS.include?($1)
