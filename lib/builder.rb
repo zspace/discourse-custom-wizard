@@ -42,9 +42,13 @@ class CustomWizard::Builder
   PROFILE_FIELDS = ['location', 'website', 'bio_raw', 'profile_background', 'card_background']
 
   def self.fill_placeholders(string, user, data)
+    # zSpace - Flattening parts of the upload object to be usable in the template system
+    if unless data['upload'].empty? 
     data['upload_url'] = data['upload']['url']
     data['human_filesize'] = data['upload']['human_filesize']
     data['original_filename'] = data['upload']['original_filename']
+    end
+    # zSpace 
     result = string.gsub(/u\{(.*?)\}/) do |match|
       result = ''
       result = user.send($1) if USER_FIELDS.include?($1)
