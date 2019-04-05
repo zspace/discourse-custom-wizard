@@ -43,11 +43,11 @@ class CustomWizard::Builder
 
   def self.fill_placeholders(string, user, data)
     # zSpace - Flattening parts of the upload object to be usable in the template system
-    if unless data['upload'].empty? 
+    # if unless data['upload'].empty? 
     data['upload_url'] = data['upload']['url']
     data['human_filesize'] = data['upload']['human_filesize']
     data['original_filename'] = data['upload']['original_filename']
-    end
+    # end
     # zSpace 
     result = string.gsub(/u\{(.*?)\}/) do |match|
       result = ''
